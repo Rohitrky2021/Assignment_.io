@@ -16,6 +16,7 @@ function convertNestedJSONToExcel(json, outputFileName) {
 
 // =============================================================================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+try{
   // Sheet 1: Basic Information with Test Columns
   const sheet1Data = [
     {
@@ -82,6 +83,11 @@ function convertNestedJSONToExcel(json, outputFileName) {
 
   // Write the workbook to an Excel file
   XLSX.writeFile(workbook, outputFileName); // Save the workbook to the specified file
+
+  console.log(`Conversion successful. Check ${outputFileName}`); // Print success message
+} catch (error) {
+  console.error('Error occurred while converting JSON to Excel:', error.message);
+}
 }
 
 
@@ -144,4 +150,4 @@ const outputFileName = 'output.xlsx';
 // Convert nested JSON to Excel
 convertNestedJSONToExcel(nestedJSON, outputFileName); // Call the function to convert JSON to Excel
 
-console.log(`Conversion successful. Check ${outputFileName}`); // Print success message
+// console.log(`Conversion successful. Check ${outputFileName}`); // Print success message
